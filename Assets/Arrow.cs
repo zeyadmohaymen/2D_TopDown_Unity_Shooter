@@ -8,8 +8,14 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        if(col.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
+        {
+            enemyComponent.TakeDamage(1);
+        }
+        
         GameObject effect = Instantiate(HitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 0.3f);
         Destroy(gameObject);
+
     }
 }

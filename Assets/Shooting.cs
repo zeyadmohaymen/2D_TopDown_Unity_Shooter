@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
     {
         animator.SetBool("Attack", Input.GetButtonDown("Fire1"));
 
-        if(Input.GetButtonDown("Fire1") && animator.GetFloat("Speed") == 0)
+        if(Input.GetButtonDown("Fire1"))
         {
             Invoke("Shoot", 0.4f);
         }

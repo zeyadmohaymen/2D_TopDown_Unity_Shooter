@@ -34,25 +34,38 @@ public class PlayerMovement : MonoBehaviour
     // Sets Direction parameter and rotates FirePoint accordingly
     void LookDirection()
     {
+        
         if(movement.y == 1)
         {
+            resetPos();
             animator.SetFloat("Direction", 1);
-            firePoint.rotation = Quaternion.Euler(0,0,0);
+            firePoint.RotateAround(rb.position, new Vector3(0,0,1), 0);
         }
         else if(movement.x == 1)
         {
+            resetPos();
             animator.SetFloat("Direction", 2);
-            firePoint.rotation = Quaternion.Euler(0,0,-90f);
+            firePoint.RotateAround(rb.position, new Vector3(0,0,1), -90f);
         }
         else if(movement.x == -1)
         {
+            resetPos();
             animator.SetFloat("Direction", -2);
-            firePoint.rotation = Quaternion.Euler(0,0,90f);
+            firePoint.RotateAround(rb.position, new Vector3(0,0,1), 90f);
         }
         else if(movement.y == -1)
         {
+            resetPos();
             animator.SetFloat("Direction", -1);
-            firePoint.rotation = Quaternion.Euler(0,0,180f);
+            firePoint.RotateAround(rb.position, new Vector3(0,0,1), 180f);
         }
+        
+    }
+
+    // Resets local position of firepoint
+    void resetPos()
+    {
+        firePoint.rotation = Quaternion.Euler(0,0,0);
+        firePoint.localPosition = new Vector3(0,0.258f,0);
     }
 }
